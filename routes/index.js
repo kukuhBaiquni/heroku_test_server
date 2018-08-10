@@ -30,8 +30,10 @@ router.post('/submit-visitor-facebook', function(req, res){
   })
 })
 
+[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20]
+
 router.get('/get-visitor', function(req, res){
-  pool.query(`select * from visitor limit 20 offset 0`, function(err, data){
+  pool.query(`select * from visitor limit 20 offset 15`, function(err, data){
     if (err) {
       res.json({status: 'TercyduQ'})
     }else{
