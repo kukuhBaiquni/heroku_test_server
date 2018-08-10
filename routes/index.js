@@ -18,8 +18,8 @@ router.post('/submit-visitor-facebook', function(req, res){
   var id = Number(req.body.data.data.id);
   var name = req.body.data.data.name;
   var image = req.body.data.data.image;
-  var date = Date.now();
-  pool.query(`insert into visitor(id, name, image, provider, date) values(${id}, '${name}', '${image}', 'Facebook', ${date})`, function(err, afk){
+  var provider = req.body.data.data.provider
+  pool.query(`insert into visitor(id, name, image, provider) values(${id}, '${name}', '${image}', '${provider}')`, function(err, afk){
     pool.query(`select * from visitor where id = ${id}`, function(err, data){
       if (err) {
         res.json({status: 'TercyduQ'})
