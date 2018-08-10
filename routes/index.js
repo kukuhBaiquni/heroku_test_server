@@ -22,7 +22,7 @@ router.post('/submit-visitor-facebook', function(req, res){
   pool.query(`insert into visitor(id, name, image, provider) values(${id}, '${name}', '${image}', '${provider}')`, function(err, afk){
     pool.query(`select * from visitor where id = ${id}`, function(err, data){
       if (err) {
-        res.json({status: 'TercyduQ', err: err})
+        res.json({status: 'TercyduQ'})
       }else{
         res.json({data: data.rows[0]})
       }
@@ -33,7 +33,7 @@ router.post('/submit-visitor-facebook', function(req, res){
 router.get('/get-visitor', function(req, res){
   pool.query(`select * from visitor limit 20 offset 0`, function(err, data){
     if (err) {
-      res.json({status: 'TercyduQ'})
+      res.json({status: 'TercyduQ', err: err})
     }else{
       res.json({data: data.rows})
     }
